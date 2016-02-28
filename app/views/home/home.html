@@ -1,4 +1,7 @@
 <div ng-controller='HomeController as ctrl' class='content'>
+	<input ng-model='ctrl.first'/>
+	<input ng-model='ctrl.last'/>
+	<button class='add-button' ng-click='ctrl.add()'> Add </button>
 	<table>
 		<thead>
 			<tr>
@@ -18,12 +21,8 @@
 			<tr ng-repeat='person in ctrl.results | orderBy:ctrl.sortType:ctrl.sortReverse'>
 				<td> {{person.firstName}} </td>
 				<td> {{person.lastName}} </td>
-				<td> <button ng-click='ctrl.remove($index);'>Remove</button> </td>
+				<td> <button class='remove-button' ng-click='ctrl.remove($index);'>Remove</button> </td>
 			</tr>
 		</tbody>
 	</table>
-	<hr/>
-	<input ng-model='ctrl.first'/>
-	<input ng-model='ctrl.last'/>
-	<button ng-click='ctrl.add()'> Add </button>
 </div>

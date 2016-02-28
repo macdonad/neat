@@ -11,14 +11,24 @@ angular.module('MainApp.Home', ['ngRoute'])
 
 .controller('HomeController', ['$http', function($http) {
 	var ctrl = this;
+	ctrl.results = [];
+	ctrl.sortType = 'firstName';
+	ctrl.sortReverse = false;
 
-	//TODO Add to Table
+	//Add to Table
+	ctrl.add = function(){
+		var item = {firstName: ctrl.first,
+					lastName: ctrl.last}
+		ctrl.results.push(item);
+	};
 
-	//TODO Remove From Table
-
-	//TODO Sort Table
+	//Remove From Table
+	ctrl.remove = function(index){
+		ctrl.results.splice(index, 1);
+	};
 
 	//TODO Style Table
+
 
 	$http.get('../app/data.json').success(function(response) {
 	   ctrl.results = response.data;

@@ -17,18 +17,17 @@ angular.module('MainApp.Home', ['ngRoute'])
 
 	//Add to Table
 	ctrl.add = function(){
-		var item = {firstName: ctrl.first,
-					lastName: ctrl.last}
-		ctrl.results.push(item);
+		if(ctrl.first && ctrl.last){
+			var item = {firstName: ctrl.first,
+						lastName: ctrl.last}
+			ctrl.results.push(item);
+		}
 	};
 
 	//Remove From Table
 	ctrl.remove = function(index){
 		ctrl.results.splice(index, 1);
 	};
-
-	//TODO Style Table
-
 
 	$http.get('../app/data.json').success(function(response) {
 	   ctrl.results = response.data;

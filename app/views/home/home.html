@@ -1,28 +1,28 @@
-<div ng-controller='HomeController as ctrl' class='content'>
-	<input ng-model='ctrl.first'/>
-	<input ng-model='ctrl.last'/>
-	<button class='add-button' ng-click='ctrl.add()'> Add </button>
-	<table>
-		<thead>
-			<tr>
-				<td>
-					<a href="" ng-click="ctrl.sortType = 'firstName'; ctrl.sortReverse = !ctrl.sortReverse"> 
-						First Name
-					</a>
-				</td>
-				<td>
-					<a href="" ng-click="ctrl.sortType = 'lastName'; ctrl.sortReverse = !ctrl.sortReverse"> 
-						Last Name
-					</a>
-				</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat='person in ctrl.results | orderBy:ctrl.sortType:ctrl.sortReverse'>
-				<td> {{person.firstName}} </td>
-				<td> {{person.lastName}} </td>
-				<td> <button class='remove-button' ng-click='ctrl.remove($index);'>Remove</button> </td>
-			</tr>
-		</tbody>
-	</table>
+<div ng-controller='HomeController as ctrl'>
+	<div class='content-form'>
+		<input class='text-box' ng-model='ctrl.first' placeholder='FirstName'/>
+		<input class='text-box' ng-model='ctrl.last' placeholder='LastName'/>
+		<button class='add-button' ng-click='ctrl.add()'> Add </button>
+	</div>
+	<div class='content-table'>
+		<table class='table-minimal'>
+			<thead>
+				<tr>
+					<td ng-click="ctrl.sortType = 'firstName'; ctrl.sortReverse = !ctrl.sortReverse"> 
+						First Name <i class="fa fa-sort"></i>
+					</td>
+					<td ng-click="ctrl.sortType = 'lastName'; ctrl.sortReverse = !ctrl.sortReverse"> 
+						Last Name <i class="fa fa-sort"></i>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat='person in ctrl.results | orderBy:ctrl.sortType:ctrl.sortReverse'>
+					<td> {{person.firstName}} </td>
+					<td> {{person.lastName}} </td>
+					<td> <i ng-click='ctrl.remove($index);' class="fa fa-trash fa-2x"></i></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
